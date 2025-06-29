@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Static/css/style.css" />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+        --color-theme-blue: #0e82fd;
+        --font-theme-inter: "Inter", sans-serif;
+        --color-theme-navi-blue: #041e42;
+        --breakpoint-xs: 300px;
+      }
+    </style>
+  </head>
+  <body class="font-theme-inter">
+    <!-- Header -->
+    <header
+      class="w-full md:block xs:hidden bg-theme-blue text-white md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+    >
+      <div
+        class="md:max-w-[85%] w-full mx-auto md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] px-5 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-5">
+          <div class="flex items-center gap-2">
+            <i class="bxr bx-message-detail"></i>
+            <p>info@telemedmenu.com</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="bx bx-phone"></i>
+            <p>1 (773) 656-1144</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="#">Member Login</a>
+          <a href="#"> Practitioner Login</a>
+          <div class="flex items-center gap-2">
+            <img
+              class="md:w-[1.3vw] sm:w-[2.3vw] xs:w-[3.3vw]"
+              src="./images/usd.svg"
+              alt=""
+            />
+            <div class="flex items-center gap-0.5">
+              <p>USD</p>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+          </div>
+          <div class="px-5 border-l border-white flex items-center gap-3">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <header
+      class="w-full bg-theme-navi-blue text-white sticky left-0 top-0 z-50"
+    >
+      <div
+        class="md:max-w-[85%] mx-auto flex items-center justify-between px-5 md:py-[1vw] sm:py-[1.5vw] xs:py-[2vw]"
+      >
+        <!-- Logo Icon -->
+        <p
+          class="md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] font-semibold"
+        >
+          TelemedMenu
+        </p>
+        <nav class="flex items-center md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="md:flex xs:hidden items-center gap-3 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] md:block xs:hidden sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+          <div
+            id="menuIcon"
+            onclick="handleToggleMenu('menuBar', 'menuIcon')"
+            class="sm:text-[3.5vw] xs:text-[4.5vw] md:hidden xs:block"
+          >
+            <i class="bx bx-menu-wide"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <header
+      id="menuBar"
+      class="sm:w-[35vw] xs:w-[50vw] -translate-x-full h-screen text-white bg-theme-navi-blue fixed left-0 top-0 z-40"
+    >
+      <div
+        class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col justify-center"
+      >
+        <nav class="flex flex-col md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="flex flex-col gap-6 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- About Hero Section -->
+      <section class="w-full bg-theme-blue/10">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw] text-center"
+        >
+          <h1 class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold">
+            Contact Us
+          </h1>
+        </div>
+      </section>
+
+      <!-- Have Any question Details section -->
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <div
+            class="w-full h-full xs:flex flex-col md:grid grid-cols-5 md:gap-[3vw] sm:gap-[4vw] xs:gap-[5vw]"
+          >
+            <div class="w-full col-span-2">
+              <p
+                class="md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw] font-semibold text-theme-blue"
+              >
+                Get In Touch
+              </p>
+              <h2
+                class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold py-2"
+              >
+                Have Any Question?
+              </h2>
+              <div class="w-full flex flex-col gap-2">
+                <div
+                  class="w-full md:p-[1vw] sm:p-[2vw] xs:p-[3vw] flex items-center gap-3 border border-gray-300 rounded-md"
+                >
+                  <div
+                    class="md:w-[3vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center rounded-md bg-theme-blue/20 text-theme-blue md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw]"
+                  >
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <h4
+                      class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                    >
+                      Address
+                    </h4>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      1234 Willow Cove Dr. Springfield, IL 62704
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="w-full md:p-[1vw] sm:p-[2vw] xs:p-[3vw] flex items-center gap-3 border border-gray-300 rounded-md"
+                >
+                  <div
+                    class="md:w-[3vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center rounded-md bg-theme-blue/20 text-theme-blue md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw]"
+                  >
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <h4
+                      class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                    >
+                      Phone Number
+                    </h4>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      +213 (1234) 1235 456
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="w-full md:p-[1vw] sm:p-[2vw] xs:p-[3vw] flex items-center gap-3 border border-gray-300 rounded-md"
+                >
+                  <div
+                    class="md:w-[3vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center rounded-md bg-theme-blue/20 text-theme-blue md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw]"
+                  >
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h4
+                      class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                    >
+                      Email Address
+                    </h4>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      info@telemedline.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full col-span-3 flex flex-col gap-3">
+              <div
+                class="w-full flex items-center gap-3 sm:flex-row xs:flex-col"
+              >
+                <div
+                  class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-1"
+                >
+                  <label for="name" class="font-semibold">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] rounded-md border border-gray-300 outline-none px-3 w-full"
+                  />
+                </div>
+                <div
+                  class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-1"
+                >
+                  <label for="email" class="font-semibold">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] rounded-md border border-gray-300 outline-none px-3 w-full"
+                  />
+                </div>
+              </div>
+              <div
+                class="w-full flex items-center gap-3 sm:flex-row xs:flex-col"
+              >
+                <div
+                  class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-1"
+                >
+                  <label for="phoneNumber" class="font-semibold"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="number"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] rounded-md border border-gray-300 outline-none px-3 w-full"
+                  />
+                </div>
+                <div
+                  class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-1"
+                >
+                  <label for="service" class="font-semibold">Service</label>
+                  <input
+                    type="text"
+                    name="service"
+                    id="service"
+                    class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] rounded-md border border-gray-300 outline-none px-3 w-full"
+                  />
+                </div>
+              </div>
+              <div
+                class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-1"
+              >
+                <label for="message" class="font-semibold">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="7"
+                  class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] rounded-md border border-gray-300 outline-none px-3 w-full"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Location Map Section -->
+      <section class="w-full">
+        <div
+          class="w-full md:py-[5vw] sm:py-[6vw] xs:py-[7vw] md:h-[45vw] sm:h-[75vw] xs:h-[95vw]"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.05065497156!2d-74.30917427741898!3d40.69719334199166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1749796909986!5m2!1sen!2s"
+            class="w-full h-full"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="w-full">
+        <div class="w-full bg-theme-blue text-white">
+          <div
+            class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+          >
+            <div
+              class="w-full flex items-center justify-between flex-wrap pb-8 border-b border-white"
+            >
+              <h3
+                class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold"
+              >
+                TelemedMenu
+              </h3>
+              <div class="flex items-center gap-2">
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-pinterest"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="w-full pt-5 grid md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-8"
+            >
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Contact Us
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <div
+                  class="pt-6 flex flex-col gap-4 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                >
+                  <div class="flex items-center gap-1">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>info@telemedline.com</p>
+                  </div>
+
+                  <div class="flex items-center gap-1">
+                    <i class="bx bx-message-detail"></i>
+                    <p>773 252 4848</p>
+                  </div>
+
+                  <div class="flex items-center gap-1">
+                    <i class="bx bx-phone"></i>
+                    <p>312 649 2917</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Quick Links
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <ul
+                  class="pt-6 flex flex-col gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <li>
+                    <a class="flex items-center gap-1" href="/about-us.html">
+                      <i
+                        class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                      ></i>
+                      <p>About Us</p>
+                    </a>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Support</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Terms & Services</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Privacy Policy</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Controlled Substance Policy</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Health Tracking Tools</p>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Our Services
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <ul
+                  class="pt-6 flex flex-col gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Urgent Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Primary Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Chronic Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Stress and Mental Health</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Prescriptions</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Health Programs</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full bg-theme-navi-blue text-white md:py-[2vw] sm:py-[3vw] xs:py-[4vw] text-center md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+        >
+          <p>
+            Copyright &copy; 2025 <strong>TelemedMemu</strong>. All rights
+            reserved
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

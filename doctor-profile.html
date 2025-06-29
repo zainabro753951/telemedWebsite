@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Static/css/style.css" />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+        --color-theme-blue: #0e82fd;
+        --font-theme-inter: "Inter", sans-serif;
+        --color-theme-navi-blue: #041e42;
+        --breakpoint-xs: 300px;
+      }
+    </style>
+  </head>
+  <body class="font-theme-inter">
+    <!-- Header -->
+    <header
+      class="w-full md:block xs:hidden bg-theme-blue text-white md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+    >
+      <div
+        class="md:max-w-[85%] w-full mx-auto md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] px-5 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-5">
+          <div class="flex items-center gap-2">
+            <i class="bxr bx-message-detail"></i>
+            <p>info@telemedmenu.com</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="bx bx-phone"></i>
+            <p>1 (773) 656-1144</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="#">Member Login</a>
+          <a href="#"> Practitioner Login</a>
+          <div class="flex items-center gap-2">
+            <img
+              class="md:w-[1.3vw] sm:w-[2.3vw] xs:w-[3.3vw]"
+              src="./images/usd.svg"
+              alt=""
+            />
+            <div class="flex items-center gap-0.5">
+              <p>USD</p>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+          </div>
+          <div class="px-5 border-l border-white flex items-center gap-3">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <header
+      class="w-full bg-theme-navi-blue text-white sticky left-0 top-0 z-50"
+    >
+      <div
+        class="md:max-w-[85%] mx-auto flex items-center justify-between px-5 md:py-[1vw] sm:py-[1.5vw] xs:py-[2vw]"
+      >
+        <!-- Logo Icon -->
+        <p
+          class="md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] font-semibold"
+        >
+          TelemedMenu
+        </p>
+        <nav class="flex items-center md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="md:flex xs:hidden items-center gap-3 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] md:block xs:hidden sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+          <div
+            id="menuIcon"
+            onclick="handleToggleMenu('menuBar', 'menuIcon')"
+            class="sm:text-[3.5vw] xs:text-[4.5vw] md:hidden xs:block"
+          >
+            <i class="bx bx-menu-wide"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <header
+      id="menuBar"
+      class="sm:w-[35vw] xs:w-[50vw] -translate-x-full h-screen text-white bg-theme-navi-blue fixed left-0 top-0 z-40"
+    >
+      <div
+        class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col justify-center"
+      >
+        <nav class="flex flex-col md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="flex flex-col gap-6 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Doctor Profile Hero Section -->
+      <section class="w-full bg-theme-blue/10">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw] text-center"
+        >
+          <h1 class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold">
+            Doctor Profile
+          </h1>
+        </div>
+      </section>
+
+      <!-- Doctor Profile Details Section -->
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <div
+            class="w-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] border border-gray-300 md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw]"
+          >
+            <div
+              class="w-full flex flex-wrap items-center justify-between gap-5 h-full pb-7 border-b border-gray-300"
+            >
+              <div class="flex sm:flex-row xs:flex-col gap-3 items-center">
+                <img
+                  class="md:w-[13vw] sm:w-[23vw] xs:w-[33vw] md:h-[13vw] sm:h-[23vw] xs:h-[33vw] md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+                  src="./images/Provider/88e38d58541b646013151789eedbed8b7043f22a.png"
+                  alt=""
+                />
+                <div>
+                  <div class="flex justify-start">
+                    <p
+                      class="flex items-center py-1 px-3 gap-2 bg-green-500/20 rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw] text-green-600"
+                    >
+                      <svg
+                        class="w-2"
+                        viewBox="0 0 6 6"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.90625 0.703125C4.24414 0.703125 5.32812 1.78711 5.32812 3.125C5.32812 4.46289 4.24414 5.54688 2.90625 5.54688C1.56836 5.54688 0.484375 4.46289 0.484375 3.125C0.484375 1.78711 1.56836 0.703125 2.90625 0.703125Z"
+                          fill="#14B8A6"
+                        />
+                      </svg>
+                      Available
+                    </p>
+                  </div>
+                  <div class="w-full flex flex-col gap-2 py-2">
+                    <h2
+                      class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                    >
+                      Dr. John Doe
+                    </h2>
+                    <p
+                      class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                    >
+                      BDS, MDS - Oral & Maxillofacial Surgery
+                    </p>
+                  </div>
+                  <div class="w-full flex flex-col gap-2 py-2 text-gray-500">
+                    <div
+                      class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                    >
+                      <i class="fa-solid fa-location-dot text-theme-blue"></i>
+                      <p>Georgia, USA</p>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                    >
+                      <i class="fa-solid fa-user-doctor text-theme-blue"></i>
+                      <p>Georgia, USA</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] flex items-center justify-center border border-gray-400 rounded-full"
+                  >
+                    <svg
+                      class="md:w-[1.5vw] sm:w-[2.5vw] xs:w-[3.5vw]"
+                      viewBox="0 0 19 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_60_1477)">
+                        <g clip-path="url(#clip1_60_1477)">
+                          <path
+                            d="M9.94141 5.3125C9.94141 5.1716 9.88544 5.03648 9.78581 4.93685C9.68618 4.83722 9.55106 4.78125 9.41016 4.78125C9.26926 4.78125 9.13414 4.83722 9.03451 4.93685C8.93488 5.03648 8.87891 5.1716 8.87891 5.3125V7.96875H7.28516C7.14426 7.96875 7.00914 8.02472 6.90951 8.12435C6.80988 8.22398 6.75391 8.3591 6.75391 8.5C6.75391 8.6409 6.80988 8.77602 6.90951 8.87565C7.00914 8.97528 7.14426 9.03125 7.28516 9.03125H9.41016C9.55106 9.03125 9.68618 8.97528 9.78581 8.87565C9.88544 8.77602 9.94141 8.6409 9.94141 8.5V5.3125Z"
+                            fill="#10B981"
+                          />
+                          <path
+                            d="M6.93134 17C5.95384 17 5.16016 16.2074 5.16016 15.2288V13.2526C4.49071 12.6551 3.95527 11.9228 3.58902 11.1037C3.22278 10.2846 3.03402 9.39726 3.03516 8.5C3.03516 6.61194 3.85541 4.91513 5.16016 3.7485V1.77119C5.16016 0.793688 5.95278 0 6.93134 0H11.889C12.8665 0 13.6602 0.792625 13.6602 1.77119V3.74744C14.7404 4.71216 15.4593 6.01647 15.6981 7.44494C15.7741 7.43266 15.8519 7.437 15.9261 7.45764C16.0002 7.47828 16.0691 7.51474 16.1278 7.56451C16.1866 7.61428 16.2339 7.67618 16.2664 7.74596C16.299 7.81574 16.3161 7.89175 16.3165 7.96875V9.03125C16.3164 9.10837 16.2996 9.18455 16.2672 9.25451C16.2347 9.32447 16.1874 9.38653 16.1286 9.43637C16.0697 9.48621 16.0007 9.52265 15.9264 9.54315C15.8521 9.56364 15.7742 9.56771 15.6981 9.55506C15.4593 10.9835 14.7404 12.2878 13.6602 13.2526V15.2288C13.6602 16.2063 12.8676 17 11.889 17H6.93134ZM14.7227 8.5C14.7227 7.09104 14.163 5.73978 13.1667 4.74349C12.1704 3.74721 10.8192 3.1875 9.41016 3.1875C8.00119 3.1875 6.64994 3.74721 5.65365 4.74349C4.65736 5.73978 4.09766 7.09104 4.09766 8.5C4.09766 9.90896 4.65736 11.2602 5.65365 12.2565C6.64994 13.2528 8.00119 13.8125 9.41016 13.8125C10.8192 13.8125 12.1704 13.2528 13.1667 12.2565C14.163 11.2602 14.7227 9.90896 14.7227 8.5Z"
+                            fill="#10B981"
+                          />
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_60_1477">
+                          <rect
+                            width="18"
+                            height="17"
+                            fill="white"
+                            transform="translate(0.410156)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_60_1477">
+                          <rect
+                            width="18"
+                            height="17"
+                            fill="white"
+                            transform="translate(0.410156)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <p>Full Time, Online Therapy Available</p>
+                </div>
+                <div
+                  class="flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] flex items-center justify-center border border-gray-400 rounded-full"
+                  >
+                    <svg
+                      class="md:w-[1.5vw] sm:w-[2.5vw] xs:w-[3.5vw]"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_60_1495)">
+                        <g clip-path="url(#clip1_60_1495)">
+                          <g clip-path="url(#clip2_60_1495)">
+                            <path
+                              d="M6.47465 8.69995L9.72625 1.5C10.373 1.5 10.9934 1.75285 11.4507 2.20294C11.9081 2.65302 12.165 3.26347 12.165 3.89998V7.09996H16.766C17.0017 7.09734 17.2351 7.14517 17.4501 7.24014C17.6651 7.33511 17.8566 7.47495 18.0112 7.64997C18.1659 7.825 18.28 8.03102 18.3457 8.25376C18.4114 8.4765 18.4272 8.71064 18.3918 8.93995L17.27 16.1399C17.2112 16.5214 17.0143 16.8692 16.7155 17.1191C16.4168 17.369 16.0363 17.5043 15.6442 17.4999H6.47465M6.47465 8.69995V17.4999M6.47465 8.69995H4.03596C3.60477 8.69995 3.19124 8.86852 2.88634 9.16858C2.58145 9.46864 2.41016 9.8756 2.41016 10.2999V15.8999C2.41016 16.3243 2.58145 16.7312 2.88634 17.0313C3.19124 17.3313 3.60477 17.4999 4.03596 17.4999H6.47465"
+                              stroke="#004FFF"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </g>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_60_1495">
+                          <rect
+                            width="19"
+                            height="18"
+                            fill="white"
+                            transform="translate(0.910156 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_60_1495">
+                          <rect
+                            width="19"
+                            height="18"
+                            fill="white"
+                            transform="translate(0.910156 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip2_60_1495">
+                          <rect
+                            width="19"
+                            height="18"
+                            fill="white"
+                            transform="translate(0.910156 0.5)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <p>94% Recommended</p>
+                </div>
+                <div
+                  class="flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] flex items-center justify-center border border-gray-400 rounded-full"
+                  >
+                    <svg
+                      class="md:w-[1.5vw] sm:w-[2.5vw] xs:w-[3.5vw]"
+                      viewBox="0 0 18 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_60_1502)">
+                        <g clip-path="url(#clip1_60_1502)">
+                          <g clip-path="url(#clip2_60_1502)">
+                            <mask
+                              id="mask0_60_1502"
+                              style="mask-type: luminance"
+                              maskUnits="userSpaceOnUse"
+                              x="1"
+                              y="0"
+                              width="17"
+                              height="17"
+                            >
+                              <path
+                                d="M17.4102 0.5H1.41016V16.5H17.4102V0.5Z"
+                                fill="white"
+                              />
+                            </mask>
+                            <g mask="url(#mask0_60_1502)">
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M16.1732 0.574882C16.2456 0.619677 16.3054 0.682228 16.3469 0.756606C16.3884 0.830983 16.4102 0.914722 16.4102 0.999882V15.9999C16.4102 16.1325 16.3575 16.2597 16.2638 16.3534C16.17 16.4472 16.0428 16.4999 15.9102 16.4999H12.9102C12.7776 16.4999 12.6504 16.4472 12.5566 16.3534C12.4629 16.2597 12.4102 16.1325 12.4102 15.9999V14.4999H11.4102V15.9999C11.4102 16.1325 11.3575 16.2597 11.2638 16.3534C11.17 16.4472 11.0428 16.4999 10.9102 16.4999H1.91016C1.77755 16.4999 1.65037 16.4472 1.5566 16.3534C1.46283 16.2597 1.41016 16.1325 1.41016 15.9999V10.4999C1.41024 10.395 1.4433 10.2928 1.50468 10.2077C1.56606 10.1226 1.65263 10.059 1.75216 10.0259L7.41016 8.13988V4.99988C7.41016 4.9071 7.43598 4.81616 7.48472 4.73721C7.53347 4.65827 7.60321 4.59445 7.68616 4.55288L15.6862 0.552882C15.7625 0.514688 15.8473 0.496659 15.9326 0.500509C16.0178 0.50436 16.1006 0.529964 16.1732 0.574882ZM7.41016 9.19388L2.41016 10.8599V15.4999H7.41016V9.19388ZM8.41016 15.4999H10.4102V13.9999C10.4102 13.8673 10.4628 13.7401 10.5566 13.6463C10.6504 13.5526 10.7775 13.4999 10.9102 13.4999H12.9102C13.0428 13.4999 13.17 13.5526 13.2638 13.6463C13.3575 13.7401 13.4102 13.8673 13.4102 13.9999V15.4999H15.4102V1.80888L8.41016 5.30888V15.4999Z"
+                                fill="#9333EA"
+                              />
+                              <path
+                                d="M3.41016 11.5H4.41016V12.5H3.41016V11.5ZM5.41016 11.5H6.41016V12.5H5.41016V11.5ZM3.41016 13.5H4.41016V14.5H3.41016V13.5ZM5.41016 13.5H6.41016V14.5H5.41016V13.5ZM9.41016 9.5H10.4102V10.5H9.41016V9.5ZM11.4102 9.5H12.4102V10.5H11.4102V9.5ZM9.41016 11.5H10.4102V12.5H9.41016V11.5ZM11.4102 11.5H12.4102V12.5H11.4102V11.5ZM13.4102 9.5H14.4102V10.5H13.4102V9.5ZM13.4102 11.5H14.4102V12.5H13.4102V11.5ZM9.41016 7.5H10.4102V8.5H9.41016V7.5ZM11.4102 7.5H12.4102V8.5H11.4102V7.5ZM13.4102 7.5H14.4102V8.5H13.4102V7.5ZM9.41016 5.5H10.4102V6.5H9.41016V5.5ZM11.4102 5.5H12.4102V6.5H11.4102V5.5ZM13.4102 5.5H14.4102V6.5H13.4102V5.5ZM13.4102 3.5H14.4102V4.5H13.4102V3.5Z"
+                                fill="#9333EA"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_60_1502">
+                          <rect
+                            width="17"
+                            height="16"
+                            fill="white"
+                            transform="translate(0.910156 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_60_1502">
+                          <rect
+                            width="17"
+                            height="16"
+                            fill="white"
+                            transform="translate(0.910156 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip2_60_1502">
+                          <rect
+                            width="17"
+                            height="16"
+                            fill="white"
+                            transform="translate(0.910156 0.5)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <p>Royal Prince Alfred Hospital</p>
+                </div>
+                <div
+                  class="flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <div class="flex items-center gap-0.5">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                  </div>
+                  <p>5.0</p>
+                  <p class="underline">150 Reviews</p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col items-end justify-between md:h-[13vw] sm:h-[15vw] xs:h-full"
+              >
+                <div class="flex items-center gap-1">
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] bg-gray-100 border border-gray-400 rounded-full"
+                  ></div>
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] bg-gray-100 border border-gray-400 rounded-full"
+                  ></div>
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] bg-gray-100 border border-gray-400 rounded-full"
+                  ></div>
+                </div>
+                <div class="flex flex-col items-end">
+                  <div class="flex items-center gap-1">
+                    <div class="p-2 bg-green-700 rounded-full"></div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] font-semibold"
+                    >
+                      Accepting New Patients
+                    </p>
+                  </div>
+                  <div
+                    class="flex flex-wrap items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-2"
+                  >
+                    <div
+                      class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-200 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2"
+                    >
+                      <i class="bx bx-send-alt-2 text-theme-blue"></i>
+                      <p>Chat</p>
+                    </div>
+                    <div
+                      class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-200 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2"
+                    >
+                      <i class="fa-solid fa-phone text-theme-blue"></i>
+                      <p>Voice Call</p>
+                    </div>
+                    <div
+                      class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-200 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2"
+                    >
+                      <i class="fa-solid fa-video text-theme-blue"></i>
+                      <p>Video Call</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="md:pt-[1.5vw] sm:pt-[2vw] xs:pt-[2.5vw] flex flex-wrap items-center justify-between"
+            >
+              <div class="flex flex-wrap items-center gap-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw] bg-theme-blue flex items-center justify-center"
+                  >
+                    <svg
+                      class="md:w-[1.5vw] sm:w-[2.5vw] xs:w-[3.5vw]"
+                      viewBox="0 0 16 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_60_1548)">
+                        <g clip-path="url(#clip1_60_1548)">
+                          <g clip-path="url(#clip2_60_1548)">
+                            <mask
+                              id="mask0_60_1548"
+                              style="mask-type: luminance"
+                              maskUnits="userSpaceOnUse"
+                              x="0"
+                              y="0"
+                              width="16"
+                              height="17"
+                            >
+                              <path d="M16 0.5H0V16.5H16V0.5Z" fill="white" />
+                            </mask>
+                            <g mask="url(#mask0_60_1548)">
+                              <path
+                                d="M14 0.5H2C1.46957 0.5 0.960859 0.710714 0.585786 1.08579C0.210714 1.46086 0 1.96957 0 2.5V14.5C0 15.0304 0.210714 15.5391 0.585786 15.9142C0.960859 16.2893 1.46957 16.5 2 16.5H14C14.5304 16.5 15.0391 16.2893 15.4142 15.9142C15.7893 15.5391 16 15.0304 16 14.5V2.5C16 1.96957 15.7893 1.46086 15.4142 1.08579C15.0391 0.710714 14.5304 0.5 14 0.5ZM1 4.357C1 3.884 1.448 3.5 2 3.5H14C14.552 3.5 15 3.884 15 4.357V14.643C15 15.116 14.552 15.5 14 15.5H2C1.448 15.5 1 15.116 1 14.643V4.357Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M6.5 7.5C6.76522 7.5 7.01957 7.39464 7.20711 7.20711C7.39464 7.01957 7.5 6.76522 7.5 6.5C7.5 6.23478 7.39464 5.98043 7.20711 5.79289C7.01957 5.60536 6.76522 5.5 6.5 5.5C6.23478 5.5 5.98043 5.60536 5.79289 5.79289C5.60536 5.98043 5.5 6.23478 5.5 6.5C5.5 6.76522 5.60536 7.01957 5.79289 7.20711C5.98043 7.39464 6.23478 7.5 6.5 7.5ZM9.5 7.5C9.76522 7.5 10.0196 7.39464 10.2071 7.20711C10.3946 7.01957 10.5 6.76522 10.5 6.5C10.5 6.23478 10.3946 5.98043 10.2071 5.79289C10.0196 5.60536 9.76522 5.5 9.5 5.5C9.23478 5.5 8.98043 5.60536 8.79289 5.79289C8.60536 5.98043 8.5 6.23478 8.5 6.5C8.5 6.76522 8.60536 7.01957 8.79289 7.20711C8.98043 7.39464 9.23478 7.5 9.5 7.5ZM12.5 7.5C12.7652 7.5 13.0196 7.39464 13.2071 7.20711C13.3946 7.01957 13.5 6.76522 13.5 6.5C13.5 6.23478 13.3946 5.98043 13.2071 5.79289C13.0196 5.60536 12.7652 5.5 12.5 5.5C12.2348 5.5 11.9804 5.60536 11.7929 5.79289C11.6054 5.98043 11.5 6.23478 11.5 6.5C11.5 6.76522 11.6054 7.01957 11.7929 7.20711C11.9804 7.39464 12.2348 7.5 12.5 7.5ZM3.5 10.5C3.76522 10.5 4.01957 10.3946 4.20711 10.2071C4.39464 10.0196 4.5 9.76522 4.5 9.5C4.5 9.23478 4.39464 8.98043 4.20711 8.79289C4.01957 8.60536 3.76522 8.5 3.5 8.5C3.23478 8.5 2.98043 8.60536 2.79289 8.79289C2.60536 8.98043 2.5 9.23478 2.5 9.5C2.5 9.76522 2.60536 10.0196 2.79289 10.2071C2.98043 10.3946 3.23478 10.5 3.5 10.5ZM6.5 10.5C6.76522 10.5 7.01957 10.3946 7.20711 10.2071C7.39464 10.0196 7.5 9.76522 7.5 9.5C7.5 9.23478 7.39464 8.98043 7.20711 8.79289C7.01957 8.60536 6.76522 8.5 6.5 8.5C6.23478 8.5 5.98043 8.60536 5.79289 8.79289C5.60536 8.98043 5.5 9.23478 5.5 9.5C5.5 9.76522 5.60536 10.0196 5.79289 10.2071C5.98043 10.3946 6.23478 10.5 6.5 10.5ZM9.5 10.5C9.76522 10.5 10.0196 10.3946 10.2071 10.2071C10.3946 10.0196 10.5 9.76522 10.5 9.5C10.5 9.23478 10.3946 8.98043 10.2071 8.79289C10.0196 8.60536 9.76522 8.5 9.5 8.5C9.23478 8.5 8.98043 8.60536 8.79289 8.79289C8.60536 8.98043 8.5 9.23478 8.5 9.5C8.5 9.76522 8.60536 10.0196 8.79289 10.2071C8.98043 10.3946 9.23478 10.5 9.5 10.5ZM12.5 10.5C12.7652 10.5 13.0196 10.3946 13.2071 10.2071C13.3946 10.0196 13.5 9.76522 13.5 9.5C13.5 9.23478 13.3946 8.98043 13.2071 8.79289C13.0196 8.60536 12.7652 8.5 12.5 8.5C12.2348 8.5 11.9804 8.60536 11.7929 8.79289C11.6054 8.98043 11.5 9.23478 11.5 9.5C11.5 9.76522 11.6054 10.0196 11.7929 10.2071C11.9804 10.3946 12.2348 10.5 12.5 10.5ZM3.5 13.5C3.76522 13.5 4.01957 13.3946 4.20711 13.2071C4.39464 13.0196 4.5 12.7652 4.5 12.5C4.5 12.2348 4.39464 11.9804 4.20711 11.7929C4.01957 11.6054 3.76522 11.5 3.5 11.5C3.23478 11.5 2.98043 11.6054 2.79289 11.7929C2.60536 11.9804 2.5 12.2348 2.5 12.5C2.5 12.7652 2.60536 13.0196 2.79289 13.2071C2.98043 13.3946 3.23478 13.5 3.5 13.5ZM6.5 13.5C6.76522 13.5 7.01957 13.3946 7.20711 13.2071C7.39464 13.0196 7.5 12.7652 7.5 12.5C7.5 12.2348 7.39464 11.9804 7.20711 11.7929C7.01957 11.6054 6.76522 11.5 6.5 11.5C6.23478 11.5 5.98043 11.6054 5.79289 11.7929C5.60536 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.60536 13.0196 5.79289 13.2071C5.98043 13.3946 6.23478 13.5 6.5 13.5ZM9.5 13.5C9.76522 13.5 10.0196 13.3946 10.2071 13.2071C10.3946 13.0196 10.5 12.7652 10.5 12.5C10.5 12.2348 10.3946 11.9804 10.2071 11.7929C10.0196 11.6054 9.76522 11.5 9.5 11.5C9.23478 11.5 8.98043 11.6054 8.79289 11.7929C8.60536 11.9804 8.5 12.2348 8.5 12.5C8.5 12.7652 8.60536 13.0196 8.79289 13.2071C8.98043 13.3946 9.23478 13.5 9.5 13.5Z"
+                                fill="white"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_60_1548">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_60_1548">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip2_60_1548">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0 0.5)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]">
+                    Experience 21 Years
+                  </p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw] bg-theme-blue flex items-center justify-center"
+                  >
+                    <svg
+                      class="md:w-[1.5vw] sm:w-[2.5vw] xs:w-[3.5vw]"
+                      viewBox="0 0 17 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_60_1560)">
+                        <g clip-path="url(#clip1_60_1560)">
+                          <g clip-path="url(#clip2_60_1560)">
+                            <mask
+                              id="mask0_60_1560"
+                              style="mask-type: luminance"
+                              maskUnits="userSpaceOnUse"
+                              x="0"
+                              y="0"
+                              width="17"
+                              height="17"
+                            >
+                              <path
+                                d="M16.6899 0.5H0.689941V16.5H16.6899V0.5Z"
+                                fill="white"
+                              />
+                            </mask>
+                            <g mask="url(#mask0_60_1560)">
+                              <path
+                                d="M8.68994 15.5C6.83342 15.5 5.05295 14.7625 3.74019 13.4497C2.42744 12.137 1.68994 10.3565 1.68994 8.5C1.68994 6.64348 2.42744 4.86301 3.74019 3.55025C5.05295 2.2375 6.83342 1.5 8.68994 1.5C10.5465 1.5 12.3269 2.2375 13.6396 3.55025C14.9524 4.86301 15.6899 6.64348 15.6899 8.5C15.6899 10.3565 14.9524 12.137 13.6396 13.4497C12.3269 14.7625 10.5465 15.5 8.68994 15.5ZM8.68994 16.5C10.8116 16.5 12.8465 15.6571 14.3468 14.1569C15.847 12.6566 16.6899 10.6217 16.6899 8.5C16.6899 6.37827 15.847 4.34344 14.3468 2.84315C12.8465 1.34285 10.8116 0.5 8.68994 0.5C6.56821 0.5 4.53338 1.34285 3.03309 2.84315C1.5328 4.34344 0.689941 6.37827 0.689941 8.5C0.689941 10.6217 1.5328 12.6566 3.03309 14.1569C4.53338 15.6571 6.56821 16.5 8.68994 16.5Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M8.68994 13.5C7.36386 13.5 6.09209 12.9732 5.15441 12.0355C4.21672 11.0979 3.68994 9.82608 3.68994 8.5C3.68994 7.17392 4.21672 5.90215 5.15441 4.96447C6.09209 4.02678 7.36386 3.5 8.68994 3.5C10.016 3.5 11.2878 4.02678 12.2254 4.96447C13.1631 5.90215 13.6899 7.17392 13.6899 8.5C13.6899 9.82608 13.1631 11.0979 12.2254 12.0355C11.2878 12.9732 10.016 13.5 8.68994 13.5ZM8.68994 14.5C9.47787 14.5 10.2581 14.3448 10.986 14.0433C11.714 13.7417 12.3754 13.2998 12.9325 12.7426C13.4897 12.1855 13.9316 11.5241 14.2332 10.7961C14.5347 10.0681 14.6899 9.28793 14.6899 8.5C14.6899 7.71207 14.5347 6.93185 14.2332 6.2039C13.9316 5.47595 13.4897 4.81451 12.9325 4.25736C12.3754 3.70021 11.714 3.25825 10.986 2.95672C10.2581 2.65519 9.47787 2.5 8.68994 2.5C7.09864 2.5 5.57252 3.13214 4.4473 4.25736C3.32208 5.38258 2.68994 6.9087 2.68994 8.5C2.68994 10.0913 3.32208 11.6174 4.4473 12.7426C5.57252 13.8679 7.09864 14.5 8.68994 14.5Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M8.68994 11.5C7.89429 11.5 7.13123 11.1839 6.56862 10.6213C6.00601 10.0587 5.68994 9.29565 5.68994 8.5C5.68994 7.70435 6.00601 6.94129 6.56862 6.37868C7.13123 5.81607 7.89429 5.5 8.68994 5.5C9.48559 5.5 10.2487 5.81607 10.8112 6.37868C11.3738 6.94129 11.6899 7.70435 11.6899 8.5C11.6899 9.29565 11.3738 10.0587 10.8112 10.6213C10.2487 11.1839 9.48559 11.5 8.68994 11.5ZM8.68994 12.5C9.75081 12.5 10.7682 12.0786 11.5183 11.3284C12.2685 10.5783 12.6899 9.56087 12.6899 8.5C12.6899 7.43913 12.2685 6.42172 11.5183 5.67157C10.7682 4.92143 9.75081 4.5 8.68994 4.5C7.62907 4.5 6.61166 4.92143 5.86151 5.67157C5.11137 6.42172 4.68994 7.43913 4.68994 8.5C4.68994 9.56087 5.11137 10.5783 5.86151 11.3284C6.61166 12.0786 7.62907 12.5 8.68994 12.5Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M10.1899 8.5C10.1899 8.89782 10.0319 9.27936 9.7506 9.56066C9.4693 9.84196 9.08776 10 8.68994 10C8.29212 10 7.91058 9.84196 7.62928 9.56066C7.34798 9.27936 7.18994 8.89782 7.18994 8.5C7.18994 8.10218 7.34798 7.72064 7.62928 7.43934C7.91058 7.15804 8.29212 7 8.68994 7C9.08776 7 9.4693 7.15804 9.7506 7.43934C10.0319 7.72064 10.1899 8.10218 10.1899 8.5Z"
+                                fill="white"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_60_1560">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0.689941 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_60_1560">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0.689941 0.5)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip2_60_1560">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0.689941 0.5)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]">
+                    Experience 21 Years
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-wrap xs:pt-5 md:pt-0 items-center gap-4">
+                <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]">
+                  Price : <strong>$100</strong> - <strong>$200</strong> for a
+                  Session
+                </p>
+                <button
+                  class="md:py-[0.5vw] text-white sm:py-[1vw] xs:py-[1.5vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:text-black hover:bg-transparent"
+                >
+                  Book Oppointment
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] w-full border-b border-gray-300"
+          >
+            <h2
+              class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+            >
+              Doctor Bio
+            </h2>
+            <p
+              class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-700 pt-3"
+            >
+              “Highly motivated and experienced doctor with a passion for
+              providing excellent care to patients. Experienced in a wide
+              variety of medical settings, with particular expertise in
+              diagnostics, primary care and emergency medicine. Skilled in using
+              the latest technology to streamline patient care. Committed to
+              delivering compassionate, personalized care to each and every
+              patient.”
+            </p>
+            <div
+              class="flex items-center gap-2 text-theme-blue pt-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+            >
+              <p>See More</p>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+          </div>
+          <div
+            class="md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] w-full border-b border-gray-300"
+          >
+            <h2
+              class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+            >
+              Speciality
+            </h2>
+            <div class="flex flex-wrap items-center gap-3 pt-3">
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Orthopedic Consultation</p>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Delivery Blocks</p>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Ultrasound Injection</p>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Tooth Bleaching</p>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Tooth Bleaching</p>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-2 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Cosmetic</p>
+              </button>
+            </div>
+          </div>
+          <div
+            class="md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] w-full border-b border-gray-300"
+          >
+            <h2
+              class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+            >
+              Services & Pricing
+            </h2>
+            <div class="flex flex-wrap items-center gap-3 pt-3">
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Orthopedic Consultation</p>
+                <strong>$52</strong>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Delivery Blocks</p>
+                <strong>$24</strong>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Ultrasound Injection</p>
+                <strong>$31</strong>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Tooth Bleaching</p>
+                <strong>$52</strong>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Tooth Bleaching</p>
+                <strong>$20</strong>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2vw] xs:px-[3vw] bg-gray-100 border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] flex items-center gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <p>Cosmetic</p>
+                <strong>$10</strong>
+              </button>
+            </div>
+          </div>
+          <div
+            class="md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] w-full border-b border-gray-300"
+          >
+            <div class="flex items-center justify-between">
+              <h2
+                class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Availability
+              </h2>
+              <div class="flex items-center gap-2">
+                <button
+                  id="avail-next"
+                  class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] bg-gray-100 md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] flex items-center justify-center rounded-md cursor-pointer"
+                >
+                  <i class="bx bx-chevron-left"></i>
+                </button>
+                <button
+                  id="avail-prev"
+                  class="md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] bg-gray-100 md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] flex items-center justify-center rounded-md cursor-pointer"
+                >
+                  <i class="bx bx-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="pt-5">
+              <div class="swiper availSlider w-full">
+                <div
+                  class="swiper-wrapper w-full select-none cursor-grab active:cursor-grabbing"
+                >
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide w-full border border-gray-300 md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[2vw]"
+                  >
+                    <div
+                      class="md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-center"
+                    >
+                      <p><strong>Wed Feb 2025</strong> 01:00 - 02:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TelemedMenu Member Reviews Slider Section -->
+      <section class="w-full bg-theme-blue/10">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <h2
+            class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold text-center"
+          >
+            TelemedMenu Member Reviews
+          </h2>
+
+          <div class="w-full md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw]">
+            <div class="swiper reviewSlider w-full h-full relative">
+              <button
+                id="review-next"
+                class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] text-gray-500 bg-gray-300 cursor-pointer transition-all duration-300 hide rounded-full absolute left-0 z-10 top-1/2 -translate-y-1/2 md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] flex items-center justify-center"
+              >
+                <i class="bx bx-chevron-left"></i>
+              </button>
+              <button
+                id="review-prev"
+                class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] text-gray-500 bg-gray-300 cursor-pointer transition-all duration-300 rounded-full absolute right-0 z-10 top-1/2 -translate-y-1/2 md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] flex items-center justify-center"
+              >
+                <i class="bx bx-chevron-right"></i>
+              </button>
+              <div class="swiper-wrapper w-full flex h-full">
+                <!-- Slide Start -->
+                <div
+                  class="swiper-slide md:min-h-[20vw] sm:min-h-[35vw] xs:min-h-[75vw] bg-white rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] flex flex-col"
+                >
+                  <div
+                    class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col"
+                  >
+                    <div class="w-full flex items-center justify-between">
+                      <div class="w-full flex items-center gap-4">
+                        <div
+                          class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            src="./images/reviewSlider/f1971badac0011288d240a10aff07b98be0a65ec.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3
+                            class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                          >
+                            Dr. Rivanur R. Rafi
+                          </h3>
+                          <p
+                            class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                          >
+                            Cardiologist
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          class="md:w-[8vw] sm:w-[10vw] xs:w-[12vw]"
+                          src="./images/reviewSlider/comma.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-3"
+                    >
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      “I will get you 5 of these from the patient encounters and
+                      the education as well as the products.”
+                    </p>
+                  </div>
+                </div>
+                <!-- Slide End -->
+
+                <!-- Duplicate the above slide and change only the content inside -->
+                <!-- Slide 2 -->
+                <div
+                  class="swiper-slide md:min-h-[20vw] sm:min-h-[35vw] xs:min-h-[75vw] w-full bg-white md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] flex flex-col"
+                >
+                  <div
+                    class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col"
+                  >
+                    <div class="w-full flex items-center justify-between">
+                      <div class="w-full flex items-center gap-4">
+                        <div
+                          class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            src="./images/reviewSlider/f1971badac0011288d240a10aff07b98be0a65ec.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3
+                            class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                          >
+                            Dr. Rivanur R. Rafi
+                          </h3>
+                          <p
+                            class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                          >
+                            Cardiologist
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          class="md:w-[8vw] sm:w-[10vw] xs:w-[12vw]"
+                          src="./images/reviewSlider/comma.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-3"
+                    >
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      “Varius sit amet mattis vulputate. Nulla posuere
+                      sollicitudin on The aliquam ultrices sagittis orci a. Nunc
+                      non blandit massa enim. Fermentum posuere urna nec
+                      tincidunt praesent semper feugiat nibh. Dolor magna eget
+                      est lorem ipsum dolor sit amet endrerit dolor.”
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Slide 3 (same structure) -->
+                <div
+                  class="swiper-slide md:min-h-[20vw] sm:min-h-[35vw] xs:min-h-[75vw] w-full bg-white md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] flex flex-col"
+                >
+                  <div
+                    class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col"
+                  >
+                    <div class="w-full flex items-center justify-between">
+                      <div class="w-full flex items-center gap-4">
+                        <div
+                          class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            src="./images/reviewSlider/f1971badac0011288d240a10aff07b98be0a65ec.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3
+                            class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                          >
+                            Dr. Rivanur R. Rafi
+                          </h3>
+                          <p
+                            class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                          >
+                            Cardiologist
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          class="md:w-[8vw] sm:w-[10vw] xs:w-[12vw]"
+                          src="./images/reviewSlider/comma.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-3"
+                    >
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      “I will get you 5 of these from the patient encounters and
+                      the education as well as the products.”
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions Sections -->
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <h2
+            class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold text-center"
+          >
+            Frequently Asked Questions
+          </h2>
+          <div
+            class="md:py-[2.5vw] sm:py-[3.5vw] xs:py-[4.5vw] w-full flex flex-col gap-2"
+          >
+            <div
+              id="faq1"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  How is Telemed Menu different from other telehealth services?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq1')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq2"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  Does TeleMed Menu address both your physical and mental health
+                  concerns?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq2')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq3"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  Is it free to have an account and be a member of TeleMed Menu?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq3')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq4"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  Who are the healthcare professionals that I interact with on
+                  Telemed Menu ?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq4')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq6"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  how much are telehealth visits?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq6')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq7"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  How is Telemed Menu different from other telehealth services?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq7')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Become a Member Section -->
+      <section class="w-full bg-white">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <div
+            class="md:py-[5vw] sm:py-[6vw] xs:py-[7vw] xs:px-[2vw] xs:px-[3vw] xs:px-[4vw] bg-theme-blue md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2.5vw] text-white"
+          >
+            <h3
+              class="md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] md:leading-[2.2vw] xs:text-[3.2vw] xs:text-[4.7vw] font-semibold md:w-[78%]"
+            >
+              We solve your unique health problems and have personalized plans
+              and programs to maintain your optimal wellness , come join us
+            </h3>
+            <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-6">
+              It's free to become a member , come be part of our community
+            </p>
+            <button
+              class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border border-white hover:bg-theme-navi-blue"
+            >
+              Book Oppointment
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="w-full">
+        <div class="w-full bg-theme-blue text-white">
+          <div
+            class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+          >
+            <div
+              class="w-full flex items-center justify-between flex-wrap pb-8 border-b border-white"
+            >
+              <h3
+                class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold"
+              >
+                TelemedMenu
+              </h3>
+              <div class="flex items-center gap-2">
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-pinterest"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="w-full pt-5 grid md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-8"
+            >
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Contact Us
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <div
+                  class="pt-6 flex flex-col gap-4 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                >
+                  <div class="flex items-center gap-1">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>info@telemedline.com</p>
+                  </div>
+
+                  <div class="flex items-center gap-1">
+                    <i class="bx bx-message-detail"></i>
+                    <p>773 252 4848</p>
+                  </div>
+
+                  <div class="flex items-center gap-1">
+                    <i class="bx bx-phone"></i>
+                    <p>312 649 2917</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Quick Links
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <ul
+                  class="pt-6 flex flex-col gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <li>
+                    <a class="flex items-center gap-1" href="/about-us.html">
+                      <i
+                        class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                      ></i>
+                      <p>About Us</p>
+                    </a>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Support</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Terms & Services</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Privacy Policy</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Controlled Substance Policy</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Health Tracking Tools</p>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Our Services
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <ul
+                  class="pt-6 flex flex-col gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Urgent Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Primary Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Chronic Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Stress and Mental Health</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Prescriptions</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Health Programs</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full bg-theme-navi-blue text-white md:py-[2vw] sm:py-[3vw] xs:py-[4vw] text-center md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+        >
+          <p>
+            Copyright &copy; 2025 <strong>TelemedMemu</strong>. All rights
+            reserved
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+    integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+    integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./Static/js/common.js"></script>
+</html>

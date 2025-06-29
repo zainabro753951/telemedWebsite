@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Static/css/style.css" />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+        --color-theme-blue: #0e82fd;
+        --font-theme-inter: "Inter", sans-serif;
+        --color-theme-navi-blue: #041e42;
+        --breakpoint-xs: 300px;
+      }
+    </style>
+  </head>
+  <body class="font-theme-inter">
+    <section
+      class="w-full bg-theme-blue flex items-center justify-center min-h-screen md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+    >
+      <div
+        class="md:w-[35vw] bg-white md:p-[3.5vw] sm:p-[4.5vw] xs:p-[5.5vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw]"
+      >
+        <h4
+          class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] font-semibold text-center"
+        >
+          Member Login
+        </h4>
+        <p
+          class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] text-gray-600 text-center py-2"
+        >
+          Welcome back! Please enter your details.
+        </p>
+        <div class="w-full flex flex-col gap-8 py-4">
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="fullName" class="text-gray-600">Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              id="fullName"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+              placeholder="Full Name"
+            />
+          </div>
+
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="gender" class="text-gray-600">Gender</label>
+            <input
+              type="text"
+              name="gender"
+              id="gender"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+              placeholder="Gender"
+            />
+          </div>
+
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="dateBrith" class="text-gray-600">Date Of Birth</label>
+            <input
+              type="date"
+              name="dateBrith"
+              id="dateBrith"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+            />
+          </div>
+
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="homeAddress" class="text-gray-600">Home Address</label>
+            <input
+              type="text"
+              name="homeAddress"
+              id="homeAddress"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+              placeholder="(Optional, needed for prescriptions) "
+            />
+          </div>
+
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="contactNumber" class="text-gray-600"
+              >Contact Number</label
+            >
+            <input
+              type="number"
+              name="contactNumber"
+              id="contactNumber"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+              placeholder="+1"
+            />
+          </div>
+
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="reasonVisit" class="text-gray-600"
+              >Reason for Visit</label
+            >
+            <input
+              type="text"
+              name="reasonVisit"
+              id="reasonVisit"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+              placeholder="Chronic Illnesses (e.g. diabetes, asthma, etc.)"
+            />
+          </div>
+
+          <div
+            class="w-full md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] flex flex-col gap-2"
+          >
+            <label for="chooseVideo" class="text-gray-600"
+              >Choose Video/Audio/Chat Consult</label
+            >
+            <input
+              type="text"
+              name="chooseVideo"
+              id="chooseVideo"
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] bg-gray-200 rounded-md border border-gray-300 outline-none px-3 w-full"
+              placeholder="Chronic Illnesses (e.g. diabetes, asthma, etc.)"
+            />
+          </div>
+
+          <div
+            class="w-full py-3 flex items-center flex-col gap-2 justify-center"
+          >
+            <div
+              class="md:py-[0.7vw] sm:py-[1.2vw] xs:py-[1.7vw] md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] text-white bg-theme-blue rounded-md md:w-[75%] xs:w-full text-center"
+            >
+              Login
+            </div>
+            <label
+              for="remember"
+              class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+              >Already have an account
+              <a href="./login.html" class="text-theme-blue underline"
+                >Login</a
+              ></label
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

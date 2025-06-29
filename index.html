@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Static/css/style.css" />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+        --color-theme-blue: #0e82fd;
+        --font-theme-inter: "Inter", sans-serif;
+        --color-theme-navi-blue: #041e42;
+        --breakpoint-xs: 300px;
+      }
+    </style>
+  </head>
+  <body class="font-theme-inter">
+    <!-- Header -->
+    <header
+      class="w-full md:block xs:hidden bg-theme-blue text-white md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+    >
+      <div
+        class="md:max-w-[85%] w-full mx-auto md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] px-5 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-5">
+          <div class="flex items-center gap-2">
+            <i class="bxr bx-message-detail"></i>
+            <p>info@telemedmenu.com</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="bx bx-phone"></i>
+            <p>1 (773) 656-1144</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="#">Member Login</a>
+          <a href="#"> Practitioner Login</a>
+          <div class="flex items-center gap-2">
+            <img
+              class="md:w-[1.3vw] sm:w-[2.3vw] xs:w-[3.3vw]"
+              src="./images/usd.svg"
+              alt=""
+            />
+            <div class="flex items-center gap-0.5">
+              <p>USD</p>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+          </div>
+          <div class="px-5 border-l border-white flex items-center gap-3">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <header
+      class="w-full bg-theme-navi-blue text-white sticky left-0 top-0 z-50"
+    >
+      <div
+        class="md:max-w-[85%] mx-auto flex items-center justify-between px-5 md:py-[1vw] sm:py-[1.5vw] xs:py-[2vw]"
+      >
+        <!-- Logo Icon -->
+        <p
+          class="md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] font-semibold"
+        >
+          TelemedMenu
+        </p>
+        <nav class="flex items-center md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="md:flex xs:hidden items-center gap-3 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] md:block xs:hidden sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+          <div
+            id="menuIcon"
+            onclick="handleToggleMenu('menuBar', 'menuIcon')"
+            class="sm:text-[3.5vw] xs:text-[4.5vw] md:hidden xs:block"
+          >
+            <i class="bx bx-menu-wide"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <header
+      id="menuBar"
+      class="sm:w-[35vw] xs:w-[50vw] -translate-x-full h-screen text-white bg-theme-navi-blue fixed left-0 top-0 z-40"
+    >
+      <div
+        class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col justify-center"
+      >
+        <nav class="flex flex-col md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="flex flex-col gap-6 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-full h-full relative bg-hero-banner">
+        <div class="w-full h-full bg-black/50">
+          <div
+            class="md:max-w-[85%] mx-auto z-10 md:py-[7vw] sm:py-[9vw] xs:py-[11vw] text-center text-white px-5"
+          >
+            <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]">
+              Your Health Menu selections to get you well and maintain your
+              optimal Integrative wellness
+            </p>
+            <h1
+              class="md:text-[3vw] sm:text-[4vw] xs:text-[5.5vw] md:leading-[3.5vw] sm:leading-[4.5vw] xs:leading-[5.8vw] py-3 font-semibold"
+            >
+              Your online source for compassionate telehealth consults, health
+              programs, evidence based health products
+            </h1>
+            <p
+              class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:leading-[1.5vw] xs:leading-[2.5vw] xs:leading-[4.5vw] text-gray-200"
+            >
+              Innovative community of health care practitioners who can help you
+              solve your momment to moment <br class="md:block xs:hidden" />
+              health concerns now and provide a plan with resources and tools to
+              keep you healthy and happy
+            </p>
+            <div
+              class="md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] flex items-center justify-center gap-8"
+            >
+              <button
+                class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+              >
+                Video Consultation
+              </button>
+              <button
+                class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-white text-black md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-white hover:text-white hover:bg-transparent"
+              >
+                Text Consultation
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How TelemedMenu Works Section -->
+      <section class="w-full bg-theme-blue text-white">
+        <div
+          class="w-full md:py-[2vw] sm:py-[3vw] xs:py-[4vw] md:max-w-[85%] mx-auto px-5 text-center"
+        >
+          <h2 class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold">
+            How TelemedMenu Works
+          </h2>
+          <div
+            class="grid md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 gap-8 place-items-center md:mt-[4vw] sm:mt-[5vw] xs:mt-[6vw]"
+          >
+            <div class="flex flex-col items-center md:gap-6 sm:gap-4 xs:gap-2">
+              <div class="relative">
+                <div
+                  class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1.5vw] sm:rounded-[2vw] xs:rounded-[2.5vw] overflow-hidden border-2 border-white"
+                >
+                  <img
+                    src="./images/HowWorks/8768ceba4b2fbc6f391f9af5489816d3c6b50d77.png"
+                    class="w-full h-full objec-cover bg-center"
+                    alt=""
+                  />
+                </div>
+                <div
+                  class="absolute md:block xs:hidden left-[150%] md:w-[10vw] sm:w-[12vw] xs:w-[14vw] top-1/2 -translate-y-1/2"
+                >
+                  <img
+                    src="./images/HowWorks/Vector 711.png"
+                    class="w-full"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]">
+                Create Your Account
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center md:gap-6 sm:gap-4 xs:gap-2">
+              <div class="relative">
+                <div
+                  class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1.5vw] sm:rounded-[2vw] xs:rounded-[2.5vw] overflow-hidden border-2 border-white"
+                >
+                  <img
+                    src="./images/HowWorks/a04d8907fcdf5db8fc45b3e36ee97f08f2912344.jpg"
+                    class="w-full h-full objec-cover bg-center"
+                    alt=""
+                  />
+                </div>
+                <div
+                  class="absolute md:block xs:hidden left-[150%] md:w-[10vw] sm:w-[12vw] xs:w-[14vw] top-1/2 -translate-y-1/2"
+                >
+                  <img
+                    src="./images/HowWorks/Vector 711.png"
+                    class="w-full"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]">
+                Select your type of visit
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center md:gap-6 sm:gap-4 xs:gap-2">
+              <div class="relative">
+                <div
+                  class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1.5vw] sm:rounded-[2vw] xs:rounded-[2.5vw] overflow-hidden border-2 border-white"
+                >
+                  <img
+                    src="./images/HowWorks/a86548119b5cedbe69b25678ad176d48eaf8cd5b.png"
+                    class="w-full h-full objec-cover bg-center"
+                    alt=""
+                  />
+                </div>
+                <div
+                  class="absolute md:block xs:hidden left-[150%] md:w-[10vw] sm:w-[12vw] xs:w-[14vw] top-1/2 -translate-y-1/2"
+                >
+                  <img
+                    src="./images/HowWorks/Vector 711.png"
+                    class="w-full"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <p
+                class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] md:leading-[1.6vw] sm:leading-[2.6vw] xs:leading-[4.1vw]"
+              >
+                Schedule a text, phone, <br />
+                or video visit
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center md:gap-6 sm:gap-4 xs:gap-2">
+              <div
+                class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1.5vw] sm:rounded-[2vw] xs:rounded-[2.5vw] overflow-hidden border-2 border-white"
+              >
+                <img
+                  src="./images/HowWorks/ca143a07924d0dd9d1762696724194a2a003cff7.png"
+                  class="w-full h-full objec-cover bg-center"
+                  alt=""
+                />
+              </div>
+
+              <p
+                class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] md:leading-[1.6vw] sm:leading-[2.6vw] xs:leading-[4.1vw]"
+              >
+                Begin your appointment <br />
+                and feel better!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why TelemedMenu Works Section -->
+      <section class="w-full">
+        <div
+          class="md:w-[85%] mx-auto md:py-[5vw] sm:py-[6vw] xs:py-[7vw] px-5"
+        >
+          <div
+            class="w-full xs:flex flex-col-reverse items-center md:grid grid-cols-2 md:gap-[1.5vw] sm:gap-[2.5vw] xs:gap-[3.5vw]"
+          >
+            <div>
+              <h2
+                class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold"
+              >
+                How TelemedMenu Works
+              </h2>
+              <div class="max-w-[30%] h-1 bg-theme-blue my-4"></div>
+              <p class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] py-3">
+                Connecting members with both the best and experienced health
+                practitioners and evidence based health information to help
+                solve your health problems and maintain your optimal wellness -
+                in a way that you're most comfortable with in your environment ,
+                whether on phone video or chat
+              </p>
+              <div
+                class="md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] flex items-center gap-4"
+              >
+                <button
+                  class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[4vw] sm:px-[5w] xs:px-[6vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:text-black hover:bg-transparent"
+                >
+                  Join Now
+                </button>
+                <button
+                  class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[4vw] sm:px-[5w] xs:px-[6vw] rounded-full border-2 border-theme-blue text-black md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-theme-blue hover:text-white"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+            <div class="w-full h-full">
+              <img src="./images/WhyWorks/whyworks.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TelemedMenu Telehealth Services Section -->
+      <section class="w-full bg-theme-blue/10">
+        <div
+          class="md:w-[85%] mx-auto md:py-[5vw] sm:py-[6vw] xs:py-[7vw] px-5"
+        >
+          <h2
+            class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold text-center"
+          >
+            TelemedMenu Telehealth Services
+          </h2>
+          <div
+            class="md:py-[2.5vw] sm:py-[3.5vw] xs:py-[4.5vw] grid md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-5"
+          >
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+              >
+                Urgent Care
+              </h4>
+              <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-4">
+                Timely treatment for your worrisome non-life-threatening
+                symptoms, infections and injuries
+              </p>
+            </div>
+
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+              >
+                Primary Care
+              </h4>
+              <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-4">
+                Licensed experienced Health care professionals who can you can
+                be your primary care doctor or can offer a second medical
+                opinion
+              </p>
+            </div>
+
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+              >
+                Chronic Care Management
+              </h4>
+              <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-4">
+                Experienced practitioners providing up-to-date management for
+                health conditions as diabetes, high blood pressure and heart
+                disease
+              </p>
+            </div>
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+              >
+                Stress and Mental Health
+              </h4>
+              <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-4">
+                Employing the most up to date stress reduction techniques as
+                RMR, Rapid Mind Reset and others to quickly get to the root of
+                your stress, determine how it's affecting your physical and
+                mental health and have a robust plan to resolve stress and
+                anxiety now end of the future.
+              </p>
+            </div>
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+              >
+                Prescriptions
+              </h4>
+              <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-4">
+                Quick and secure medication request and renewals for
+                medication's like Ozempic, Lipitor and more
+              </p>
+            </div>
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+              >
+                Health Programs
+              </h4>
+              <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] pt-4">
+                After we solve your current health problem will provide health
+                programs for such issues as stress and anxiety management,
+                weight management , healthy heart, and other optimal
+                wellness programs
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose TelemedMenu Section -->
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <h2
+            class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.2vw] font-semibold text-center"
+          >
+            TelemedMenu Telehealth Services
+          </h2>
+          <div
+            class="w-full grid md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 gap-5 md:py-[2.5vw] sm:py-[3.5vw] xs:py-[4.5vw]"
+          >
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] md:leading-[1.6vw] sm:leading-[2.6vw] xs:leading-[4.1vw] font-semibold"
+              >
+                Experienced Compassionate Providers
+              </h4>
+              <p class="md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.5vw] pt-4">
+                Our licensed professionals are trained to address your immediate
+                concerns and go beyond by creating a solid plan with available
+                resources to help maintain your wellness beyond the quick fix.
+              </p>
+            </div>
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] md:leading-[1.6vw] sm:leading-[2.6vw] xs:leading-[4.1vw] font-semibold"
+              >
+                Focus on Treating the Whole You
+              </h4>
+              <p class="md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.5vw] pt-4">
+                You heath problem is solve integratively both body in mind.
+                Practitioners are trained to dig deeper and uncover stresses
+                that might affect physical and mental pain or prevent you from
+                focus focusing on how to treat your medical condition.
+              </p>
+            </div>
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] md:leading-[1.6vw] sm:leading-[2.6vw] xs:leading-[4.1vw] font-semibold"
+              >
+                Personalized Health Education
+              </h4>
+              <p class="md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.5vw] pt-4">
+                As practitioners learn about you as they solve your problem,
+                they recommend other resources as videos, books apps, and
+                coaching programs to keep you optimally well and happy
+              </p>
+            </div>
+            <div
+              class="md:px-[2vw] sm:px-[3vw] xs:px-[4vw] md:py-[3.5vw] sm:py-[4.5vw] xs:py-[5.5vw] border border-gray-300 transition-all duration-300 hover:text-white hover:bg-theme-blue"
+            >
+              <h4
+                class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] md:leading-[1.6vw] sm:leading-[2.6vw] xs:leading-[4.1vw] font-semibold"
+              >
+                Evidence-Based Treatment
+              </h4>
+              <p class="md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw] pt-4">
+                Licensed health practitioners a trained to help solve your
+                physical and mental health issues. Integratively, through both
+                research based holistic medicine and evidence based practices
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Book Your Healthcare Provider Slider Section -->
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <div class="w-full flex items-center justify-between">
+            <h2
+              class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold"
+            >
+              Book Your Healthcare Provider
+            </h2>
+            <div class="flex items-center gap-8">
+              <button
+                id="provider-next"
+                class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] cursor-pointer md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] rotate-45 bg-theme-blue transition-all duration-100 hover:bg-theme-blue/80 hover:scale-115 active:scale-100 flex items-center justify-center md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] text-white"
+              >
+                <i class="bx bx-chevron-left -rotate-45"></i>
+              </button>
+              <button
+                id="provider-prev"
+                class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] cursor-pointer md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] rotate-45 bg-theme-blue transition-all duration-100 hover:bg-theme-blue/80 hover:scale-115 active:scale-100 flex items-center justify-center md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] text-white"
+              >
+                <i class="bx bx-chevron-right -rotate-45"></i>
+              </button>
+            </div>
+          </div>
+          <div class="md:py-[2.5vw] sm:py-[3.5vw] xs:py-[4.5vw] w-full">
+            <!-- Swiper -->
+            <div class="swiper providerSlider w-full">
+              <div
+                class="swiper-wrapper w-full select-none cursor-grab active:cursor-grabbing"
+              >
+                <div class="swiper-slide w-full">
+                  <div class="w-full flex flex-col">
+                    <div class="w-full md:h-[20vw] sm:h-[35vw] xs:h-[75vw]">
+                      <img
+                        src="./images/Provider/88e38d58541b646013151789eedbed8b7043f22a.png"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="md:p-[1vw] sm:p-[2vw] xs:p-[3vw]">
+                      <!-- Rattings -->
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                        </div>
+                        <p
+                          class="py-0.5 px-3 bg-theme-blue rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          3.5
+                        </p>
+                      </div>
+                      <div class="w-full flex flex-col py-2">
+                        <h2
+                          class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                        >
+                          Dr. John Doe
+                        </h2>
+                        <p
+                          class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                        >
+                          BDS, MDS - Oral & Maxillofacial Surgery
+                        </p>
+                      </div>
+                      <div
+                        class="w-full flex items-center justify-between py-2 text-gray-500"
+                      >
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-location-dot text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-user-doctor text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                      </div>
+                      <div
+                        class="w-full flex gap-2 items-center py-3 border-t border-gray-400"
+                      >
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-navi-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-navi-blue hover:bg-transparent"
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full">
+                  <div class="w-full flex flex-col">
+                    <div class="w-full md:h-[20vw] sm:h-[35vw] xs:h-[75vw]">
+                      <img
+                        src="./images/Provider/d7849471a0554eb18f5c27e0fc0ca9bc3ffed5a2.png"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="md:p-[1vw] sm:p-[2vw] xs:p-[3vw]">
+                      <!-- Rattings -->
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                        </div>
+                        <p
+                          class="py-0.5 px-3 bg-theme-blue rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          3.5
+                        </p>
+                      </div>
+                      <div class="w-full flex flex-col py-2">
+                        <h2
+                          class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                        >
+                          Andrew L. Spencer
+                        </h2>
+                        <p
+                          class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                        >
+                          BDS, MDS - Oral & Maxillofacial Surgery
+                        </p>
+                      </div>
+                      <div
+                        class="w-full flex items-center justify-between py-2 text-gray-500"
+                      >
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-location-dot text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-user-doctor text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                      </div>
+                      <div
+                        class="w-full flex gap-2 items-center py-3 border-t border-gray-400"
+                      >
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-navi-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-navi-blue hover:bg-transparent"
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full">
+                  <div class="w-full flex flex-col">
+                    <div class="w-full md:h-[20vw] sm:h-[35vw] xs:h-[75vw]">
+                      <img
+                        src="./images/Provider/f913dcbb3afdf86d490cc82e2bf43d3411f40aac.png"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="md:p-[1vw] sm:p-[2vw] xs:p-[3vw]">
+                      <!-- Rattings -->
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                        </div>
+                        <p
+                          class="py-0.5 px-3 bg-theme-blue rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          3.5
+                        </p>
+                      </div>
+                      <div class="w-full flex flex-col py-2">
+                        <h2
+                          class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                        >
+                          Donna H. Murphy
+                        </h2>
+                        <p
+                          class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                        >
+                          BDS, MDS - Oral & Maxillofacial Surgery
+                        </p>
+                      </div>
+                      <div
+                        class="w-full flex items-center justify-between py-2 text-gray-500"
+                      >
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-location-dot text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-user-doctor text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                      </div>
+                      <div
+                        class="w-full flex gap-2 items-center py-3 border-t border-gray-400"
+                      >
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-navi-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-navi-blue hover:bg-transparent"
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full">
+                  <div class="w-full flex flex-col">
+                    <div class="w-full md:h-[20vw] sm:h-[35vw] xs:h-[75vw]">
+                      <img
+                        src="./images/Provider/fadc38ea3455b480ba32a036ddf00fa7317dabd6.png"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="md:p-[1vw] sm:p-[2vw] xs:p-[3vw]">
+                      <!-- Rattings -->
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                        </div>
+                        <p
+                          class="py-0.5 px-3 bg-theme-blue rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          3.5
+                        </p>
+                      </div>
+                      <div class="w-full flex flex-col py-2">
+                        <h2
+                          class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                        >
+                          Adela D. Villa
+                        </h2>
+                        <p
+                          class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                        >
+                          BDS, MDS - Oral & Maxillofacial Surgery
+                        </p>
+                      </div>
+                      <div
+                        class="w-full flex items-center justify-between py-2 text-gray-500"
+                      >
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-location-dot text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-user-doctor text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                      </div>
+                      <div
+                        class="w-full flex gap-2 items-center py-3 border-t border-gray-400"
+                      >
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-navi-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-navi-blue hover:bg-transparent"
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full">
+                  <div class="w-full flex flex-col">
+                    <div class="w-full md:h-[20vw] sm:h-[35vw] xs:h-[75vw]">
+                      <img
+                        src="./images/Provider/d7849471a0554eb18f5c27e0fc0ca9bc3ffed5a2.png"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="md:p-[1vw] sm:p-[2vw] xs:p-[3vw]">
+                      <!-- Rattings -->
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                        </div>
+                        <p
+                          class="py-0.5 px-3 bg-theme-blue rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          3.5
+                        </p>
+                      </div>
+                      <div class="w-full flex flex-col py-2">
+                        <h2
+                          class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                        >
+                          Dr. John Doe
+                        </h2>
+                        <p
+                          class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                        >
+                          BDS, MDS - Oral & Maxillofacial Surgery
+                        </p>
+                      </div>
+                      <div
+                        class="w-full flex items-center justify-between py-2 text-gray-500"
+                      >
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-location-dot text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-user-doctor text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                      </div>
+                      <div
+                        class="w-full flex gap-2 items-center py-3 border-t border-gray-400"
+                      >
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-navi-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-navi-blue hover:bg-transparent"
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full">
+                  <div class="w-full flex flex-col">
+                    <div class="w-full md:h-[20vw] sm:h-[35vw] xs:h-[75vw]">
+                      <img
+                        src="./images/Provider/f913dcbb3afdf86d490cc82e2bf43d3411f40aac.png"
+                        alt=""
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="md:p-[1vw] sm:p-[2vw] xs:p-[3vw]">
+                      <!-- Rattings -->
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="flex items-center gap-1 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                          <i class="fa-solid fa-star text-yellow-400"></i>
+                        </div>
+                        <p
+                          class="py-0.5 px-3 bg-theme-blue rounded-full md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                        >
+                          3.5
+                        </p>
+                      </div>
+                      <div class="w-full flex flex-col py-2">
+                        <h2
+                          class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                        >
+                          Dr. John Doe
+                        </h2>
+                        <p
+                          class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                        >
+                          BDS, MDS - Oral & Maxillofacial Surgery
+                        </p>
+                      </div>
+                      <div
+                        class="w-full flex items-center justify-between py-2 text-gray-500"
+                      >
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-location-dot text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                        <div
+                          class="flex items-center gap-1 md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw]"
+                        >
+                          <i
+                            class="fa-solid fa-user-doctor text-theme-blue"
+                          ></i>
+                          <p>Georgia, USA</p>
+                        </div>
+                      </div>
+                      <div
+                        class="w-full flex gap-2 items-center py-3 border-t border-gray-400"
+                      >
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1vw] sm:px-[2w] xs:px-[3vw] rounded-full text-white bg-theme-navi-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-navi-blue hover:bg-transparent"
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TelemedMenu Member Reviews Slider Section -->
+      <section class="w-full bg-theme-blue/10">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <h2
+            class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold text-center"
+          >
+            TelemedMenu Member Reviews
+          </h2>
+
+          <div class="w-full md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw]">
+            <div class="swiper reviewSlider w-full h-full relative">
+              <button
+                id="review-next"
+                class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] text-gray-500 bg-gray-300 cursor-pointer transition-all duration-300 hide rounded-full absolute left-0 z-10 top-1/2 -translate-y-1/2 md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] flex items-center justify-center"
+              >
+                <i class="bx bx-chevron-left"></i>
+              </button>
+              <button
+                id="review-prev"
+                class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] text-gray-500 bg-gray-300 cursor-pointer transition-all duration-300 rounded-full absolute right-0 z-10 top-1/2 -translate-y-1/2 md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] flex items-center justify-center"
+              >
+                <i class="bx bx-chevron-right"></i>
+              </button>
+              <div class="swiper-wrapper w-full flex h-full">
+                <!-- Slide Start -->
+                <div
+                  class="swiper-slide md:min-h-[20vw] sm:min-h-[35vw] xs:min-h-[75vw] bg-white rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] flex flex-col"
+                >
+                  <div
+                    class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col"
+                  >
+                    <div class="w-full flex items-center justify-between">
+                      <div class="w-full flex items-center gap-4">
+                        <div
+                          class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            src="./images/reviewSlider/f1971badac0011288d240a10aff07b98be0a65ec.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3
+                            class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                          >
+                            Dr. Rivanur R. Rafi
+                          </h3>
+                          <p
+                            class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                          >
+                            Cardiologist
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          class="md:w-[8vw] sm:w-[10vw] xs:w-[12vw]"
+                          src="./images/reviewSlider/comma.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-3"
+                    >
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      “I will get you 5 of these from the patient encounters and
+                      the education as well as the products.”
+                    </p>
+                  </div>
+                </div>
+                <!-- Slide End -->
+
+                <!-- Duplicate the above slide and change only the content inside -->
+                <!-- Slide 2 -->
+                <div
+                  class="swiper-slide md:min-h-[20vw] sm:min-h-[35vw] xs:min-h-[75vw] w-full bg-white md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] flex flex-col"
+                >
+                  <div
+                    class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col"
+                  >
+                    <div class="w-full flex items-center justify-between">
+                      <div class="w-full flex items-center gap-4">
+                        <div
+                          class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            src="./images/reviewSlider/f1971badac0011288d240a10aff07b98be0a65ec.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3
+                            class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                          >
+                            Dr. Rivanur R. Rafi
+                          </h3>
+                          <p
+                            class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                          >
+                            Cardiologist
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          class="md:w-[8vw] sm:w-[10vw] xs:w-[12vw]"
+                          src="./images/reviewSlider/comma.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-3"
+                    >
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      “Varius sit amet mattis vulputate. Nulla posuere
+                      sollicitudin on The aliquam ultrices sagittis orci a. Nunc
+                      non blandit massa enim. Fermentum posuere urna nec
+                      tincidunt praesent semper feugiat nibh. Dolor magna eget
+                      est lorem ipsum dolor sit amet endrerit dolor.”
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Slide 3 (same structure) -->
+                <div
+                  class="swiper-slide md:min-h-[20vw] sm:min-h-[35vw] xs:min-h-[75vw] w-full bg-white md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] flex flex-col"
+                >
+                  <div
+                    class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col"
+                  >
+                    <div class="w-full flex items-center justify-between">
+                      <div class="w-full flex items-center gap-4">
+                        <div
+                          class="md:w-[5vw] sm:w-[7vw] xs:w-[9vw] md:h-[5vw] sm:h-[7vw] xs:h-[9vw] md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2vw] overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            src="./images/reviewSlider/f1971badac0011288d240a10aff07b98be0a65ec.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3
+                            class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                          >
+                            Dr. Rivanur R. Rafi
+                          </h3>
+                          <p
+                            class="md:text-[0.8vw] sm:text-[1.8vw] xs:text-[3.3vw] text-gray-500"
+                          >
+                            Cardiologist
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          class="md:w-[8vw] sm:w-[10vw] xs:w-[12vw]"
+                          src="./images/reviewSlider/comma.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-1 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-3"
+                    >
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                      <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p
+                      class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-500"
+                    >
+                      “I will get you 5 of these from the patient encounters and
+                      the education as well as the products.”
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions Sections -->
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <h2
+            class="md:text-[2.5vw] sm:text-[3.5vw] xs:text-[5vw] font-semibold text-center"
+          >
+            Frequently Asked Questions
+          </h2>
+          <div
+            class="md:py-[2.5vw] sm:py-[3.5vw] xs:py-[4.5vw] w-full flex flex-col gap-2"
+          >
+            <div
+              id="faq1"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  How is Telemed Menu different from other telehealth services?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq1')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq2"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  Does TeleMed Menu address both your physical and mental health
+                  concerns?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq2')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq3"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  Is it free to have an account and be a member of TeleMed Menu?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq3')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq4"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  Who are the healthcare professionals that I interact with on
+                  Telemed Menu ?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq4')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq6"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  how much are telehealth visits?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq6')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="faq7"
+              style="box-shadow: 0 0 10px rgb(205, 205, 205)"
+              class="w-full flex flex-col md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw]"
+            >
+              <div
+                class="w-full flex items-center flex-wrap xs:justify-end sm:justify-between md:p-[1vw] sm:p-[1.5vw] xs:p-[2vw]"
+              >
+                <h4
+                  class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+                >
+                  How is Telemed Menu different from other telehealth services?
+                </h4>
+                <div
+                  id="faqButton"
+                  onclick="openFAQ('faq7')"
+                  class="md:text-[1.8vw] sm:text-[2.8vw] xs:text-[4.3vw] md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] flex items-center justify-center text-white md:rounded-[0.5vw] sm:rounded-[1vw] xs:rounded-[1.5vw] cursor-pointer bg-theme-blue"
+                >
+                  <i class="bx bx-plus"></i>
+                </div>
+              </div>
+              <div id="FAQShow" class="overflow-hidden h-0">
+                <div
+                  class="md:p-[1vw] border-t border-gray-300 sm:p-[1.5vw] xs:p-[2vw]"
+                >
+                  <p
+                    class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] md:w-[75%]"
+                  >
+                    Telemed Menu experienced licensed professionals go through
+                    special training so they can analyze all the factors like
+                    stress that affect your health problem. Unlike other
+                    telemedicine companies, there is timely follow-up to make
+                    sure your health issue was indeed resolved.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Become a Member Section -->
+      <section class="w-full bg-white">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <div
+            class="md:py-[5vw] sm:py-[6vw] xs:py-[7vw] xs:px-[2vw] xs:px-[3vw] xs:px-[4vw] bg-theme-blue md:rounded-[1vw] sm:rounded-[1.5vw] xs:rounded-[2.5vw] text-white"
+          >
+            <h3
+              class="md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] md:leading-[2.2vw] xs:text-[3.2vw] xs:text-[4.7vw] font-semibold md:w-[78%]"
+            >
+              We solve your unique health problems and have personalized plans
+              and programs to maintain your optimal wellness , come join us
+            </h3>
+            <p class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] py-6">
+              It's free to become a member , come be part of our community
+            </p>
+            <button
+              class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border border-white hover:bg-theme-navi-blue"
+            >
+              Become a Member
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="w-full">
+        <div class="w-full bg-theme-blue text-white">
+          <div
+            class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+          >
+            <div
+              class="w-full flex items-center justify-between flex-wrap pb-8 border-b border-white"
+            >
+              <h3
+                class="md:text-[2vw] sm:text-[3vw] xs:text-[4.5vw] font-semibold"
+              >
+                TelemedMenu
+              </h3>
+              <div class="flex items-center gap-2">
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+                <a
+                  href="#"
+                  class="md:w-[3.5vw] sm:w-[5.5vw] xs:w-[7.5vw] md:h-[3.5vw] sm:h-[5.5vw] xs:h-[7.5vw] bg-white text-theme-blue rounded-full flex items-center justify-center transition-all duration-300 hover:bg-theme-navi-blue hover:text-white hover:scale-125"
+                  ><i class="fa-brands fa-pinterest"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="w-full pt-5 grid md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-8"
+            >
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Contact Us
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <div
+                  class="pt-6 flex flex-col gap-4 md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+                >
+                  <div class="flex items-center gap-1">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>info@telemedline.com</p>
+                  </div>
+
+                  <div class="flex items-center gap-1">
+                    <i class="bx bx-message-detail"></i>
+                    <p>773 252 4848</p>
+                  </div>
+
+                  <div class="flex items-center gap-1">
+                    <i class="bx bx-phone"></i>
+                    <p>312 649 2917</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Quick Links
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <ul
+                  class="pt-6 flex flex-col gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <li>
+                    <a class="flex items-center gap-1" href="/about-us.html">
+                      <i
+                        class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                      ></i>
+                      <p>About Us</p>
+                    </a>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Support</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Terms & Services</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Privacy Policy</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Controlled Substance Policy</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Health Tracking Tools</p>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-2"
+                >
+                  Our Services
+                </h3>
+                <div class="w-[70px] flex items-center gap-2">
+                  <div class="h-0.5 w-[30%] bg-white"></div>
+                  <div class="h-0.5 w-[70%] bg-white"></div>
+                </div>
+
+                <ul
+                  class="pt-6 flex flex-col gap-4 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+                >
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Urgent Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Primary Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Chronic Care</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Stress and Mental Health</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Prescriptions</p>
+                  </li>
+
+                  <li class="flex items-center gap-1">
+                    <i
+                      class="bx bx-chevron-right md:text-[1.4vw] sm:text-[2.4vw] xs:text-[3.9vw]"
+                    ></i>
+                    <p>Health Programs</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full bg-theme-navi-blue text-white md:py-[2vw] sm:py-[3vw] xs:py-[4vw] text-center md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+        >
+          <p>
+            Copyright &copy; 2025 <strong>TelemedMemu</strong>. All rights
+            reserved
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+    integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+    integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./Static/js/script.js"></script>
+  <script src="./Static/js/common.js"></script>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Static/css/style.css" />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+        --color-theme-blue: #0e82fd;
+        --font-theme-inter: "Inter", sans-serif;
+        --color-theme-navi-blue: #041e42;
+        --breakpoint-xs: 300px;
+      }
+    </style>
+  </head>
+  <body class="font-theme-inter">
+    <!-- Header -->
+    <header
+      class="w-full md:block xs:hidden bg-theme-blue text-white md:text-[0.9vw] sm:text-[1.9vw] xs:text-[3.4vw]"
+    >
+      <div
+        class="md:max-w-[85%] w-full mx-auto md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] px-5 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-5">
+          <div class="flex items-center gap-2">
+            <i class="bxr bx-message-detail"></i>
+            <p>info@telemedmenu.com</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="bx bx-phone"></i>
+            <p>1 (773) 656-1144</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="#">Member Login</a>
+          <a href="#"> Practitioner Login</a>
+          <div class="flex items-center gap-2">
+            <img
+              class="md:w-[1.3vw] sm:w-[2.3vw] xs:w-[3.3vw]"
+              src="./images/usd.svg"
+              alt=""
+            />
+            <div class="flex items-center gap-0.5">
+              <p>USD</p>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+          </div>
+          <div class="px-5 border-l border-white flex items-center gap-3">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <header
+      class="w-full bg-theme-navi-blue text-white sticky left-0 top-0 z-50"
+    >
+      <div
+        class="md:max-w-[85%] mx-auto flex items-center justify-between px-5 md:py-[1vw] sm:py-[1.5vw] xs:py-[2vw]"
+      >
+        <!-- Logo Icon -->
+        <p
+          class="md:text-[1.7vw] sm:text-[2.7vw] xs:text-[4.2vw] font-semibold"
+        >
+          TelemedMenu
+        </p>
+        <nav class="flex items-center md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="md:flex xs:hidden items-center gap-3 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] md:block xs:hidden sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+          <div
+            id="menuIcon"
+            onclick="handleToggleMenu('menuBar', 'menuIcon')"
+            class="sm:text-[3.5vw] xs:text-[4.5vw] md:hidden xs:block"
+          >
+            <i class="bx bx-menu-wide"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <header
+      id="menuBar"
+      class="sm:w-[35vw] xs:w-[50vw] -translate-x-full h-screen text-white bg-theme-navi-blue fixed left-0 top-0 z-40"
+    >
+      <div
+        class="w-full h-full md:p-[1.5vw] sm:p-[2.5vw] xs:p-[3.5vw] flex flex-col justify-center"
+      >
+        <nav class="flex flex-col md:gap-[3vw] sm:gap-[8vw] xs:gap-[9vw]">
+          <div
+            class="flex flex-col gap-6 md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+          >
+            <a href="#" class="px-[1vw]">Urgent care</a>
+            <a href="#" class="px-[1vw]">Primary care</a>
+            <a href="#" class="px-[1vw]">Prescriptions</a>
+            <a href="#" class="px-[1vw]">Health Programs</a>
+            <a href="#" class="px-[1vw]">Contact us</a>
+          </div>
+          <button
+            class="md:py-[0.8vw] sm:py-[1.3vw] xs:py-[1.8vw] md:px-[1.5vw] sm:px-[2.5w] xs:px-[3.5vw] rounded-full bg-theme-blue md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] transition-all duration-300 border-2 border-theme-blue hover:bg-transparent"
+          >
+            Book Oppointment
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-full">
+        <div
+          class="md:max-w-[85%] mx-auto px-5 md:py-[5vw] sm:py-[6vw] xs:py-[7vw]"
+        >
+          <div
+            class="md:w-[70%] mx-auto md:py-[1.5vw] sm:py-[2.5vw] xs:py-[3.5vw] flex items-center flex-wrap gap-5 justify-between"
+          >
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="relative">
+                <div
+                  class="bg-gray-200 text-white md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] rounded-full flex items-center justify-center md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+                >
+                  1
+                </div>
+                <div
+                  class="absolute md:block xs:hidden -right-[7.5vw] top-1/2 -translate-y-1/2"
+                >
+                  <svg
+                    viewBox="0 0 89 2"
+                    class="md:w-[7vw]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="1.30078"
+                      y="0.5"
+                      width="86.42"
+                      height="1"
+                      stroke="#E6E8EE"
+                      stroke-dasharray="3 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="text-gray-400 md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Specialty
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="relative">
+                <div
+                  class="bg-gray-200 text-white md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] rounded-full flex items-center justify-center md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+                >
+                  2
+                </div>
+                <div
+                  class="absolute md:block xs:hidden -right-[7.5vw] top-1/2 -translate-y-1/2"
+                >
+                  <svg
+                    viewBox="0 0 89 2"
+                    class="md:w-[7vw]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="1.30078"
+                      y="0.5"
+                      width="86.42"
+                      height="1"
+                      stroke="#E6E8EE"
+                      stroke-dasharray="3 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="text-gray-400 md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Appointment Type
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="relative">
+                <div
+                  class="bg-theme-blue text-white md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] rounded-full flex items-center justify-center md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+                >
+                  3
+                </div>
+                <div
+                  class="absolute md:block xs:hidden -right-[7.5vw] top-1/2 -translate-y-1/2"
+                >
+                  <svg
+                    viewBox="0 0 89 2"
+                    class="md:w-[7vw]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="1.30078"
+                      y="0.5"
+                      width="86.42"
+                      height="1"
+                      stroke="#E6E8EE"
+                      stroke-dasharray="3 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Date & Time
+              </p>
+            </div>
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="relative">
+                <div
+                  class="bg-gray-200 text-white md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] rounded-full flex items-center justify-center md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+                >
+                  4
+                </div>
+                <div
+                  class="absolute md:block xs:hidden -right-[7.5vw] top-1/2 -translate-y-1/2"
+                >
+                  <svg
+                    viewBox="0 0 89 2"
+                    class="md:w-[7vw]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="1.30078"
+                      y="0.5"
+                      width="86.42"
+                      height="1"
+                      stroke="#E6E8EE"
+                      stroke-dasharray="3 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="text-gray-400 md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Basic Information
+              </p>
+            </div>
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="relative">
+                <div
+                  class="bg-gray-200 text-white md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] rounded-full flex items-center justify-center md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+                >
+                  5
+                </div>
+                <div
+                  class="absolute md:block xs:hidden -right-[5.5vw] top-1/2 -translate-y-1/2"
+                >
+                  <svg
+                    viewBox="0 0 89 2"
+                    class="md:w-[5vw]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="1.30078"
+                      y="0.5"
+                      width="86.42"
+                      height="1"
+                      stroke="#E6E8EE"
+                      stroke-dasharray="3 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="text-gray-400 md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Payment
+              </p>
+            </div>
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div
+                class="bg-gray-200 text-white md:w-[2.5vw] sm:w-[4.5vw] xs:w-[6.5vw] md:h-[2.5vw] sm:h-[4.5vw] xs:h-[6.5vw] rounded-full flex items-center justify-center md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+              >
+                6
+              </div>
+              <p
+                class="text-gray-400 md:text-[1.2vw] sm:text-[2.2vw] xs:text-[3.7vw] font-semibold"
+              >
+                Confirmation
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-100 border border-gray-300 w-full flex flex-col rounded-xl"
+          >
+            <div
+              class="md:m-[2vw] sm:m-[3vw] xs:m-[4vw] md:p-[2vw] sm:p-[3vw] xs:p-[4vw] bg-white border border-gray-300 rounded-lg flex sm:flex-row xs:flex-col items-center xs:gap-8 sm:gap-4"
+            >
+              <div
+                class="md:w-[10vw] md:h-[10vw] sm:w-[20vw] sm:h-[20vw] xs:w-[30vw] xs:h-[30vw] rounded-full bg-gray-100 overflow-hidden"
+              >
+                <img
+                  src="../images/oppointmens/doctor.jpg"
+                  class="objec-cover"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h3
+                  class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+                >
+                  Dr. Michael Brown
+                </h3>
+                <p
+                  class="md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw] font-semibold pb-3"
+                >
+                  Psychologist
+                </p>
+                <p
+                  class="md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw] text-gray-600 flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-location-dot"></i>
+                  5th Street - 1011 W 5th St, Suite 120, Austin, TX 78703
+                </p>
+              </div>
+            </div>
+            <hr class="text-gray-300" />
+            <div
+              class="md:m-[2vw] sm:m-[3vw] xs:m-[4vw] md:p-[2vw] sm:p-[3vw] xs:p-[4vw] bg-white border border-gray-300 rounded-lg"
+            >
+              <h3
+                class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold pb-4"
+              >
+                Select Date & Time
+              </h3>
+              <div
+                class="w-full grid md:grid-cols-5 gap-5 md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+              >
+                <div
+                  class="col-span-2 md:text-[1.1vw] sm:text-[2.1vw] xs:text-[3.6vw]"
+                >
+                  <div class="w-full p-4 border border-gray-300 rounded-lg">
+                    <div class="flex items-center justify-between mb-4">
+                      <button id="prevMonth" class="px-2">&lt;</button>
+                      <h2 id="monthYear" class="font-semibold">
+                        September 2019
+                      </h2>
+                      <button id="nextMonth" class="px-2">&gt;</button>
+                    </div>
+                    <div
+                      class="grid grid-cols-7 text-center text-gray-600 mb-2 bg-gray-100 p-2"
+                    >
+                      <div>S</div>
+                      <div>M</div>
+                      <div>T</div>
+                      <div>W</div>
+                      <div>T</div>
+                      <div>F</div>
+                      <div>S</div>
+                    </div>
+                    <div
+                      id="calendarDays"
+                      class="grid grid-cols-7 text-center gap-y-2"
+                    ></div>
+                    <!-- Show selected date -->
+                    <p
+                      id="selectedDateDisplay"
+                      class="mt-4 text-gray-600 text-center"
+                    ></p>
+                  </div>
+                </div>
+                <div
+                  class="col-span-3 w-full flex flex-col gap-4 md:p-[1vw] sm:p-[2vw] xs:p-[3vw] border border-gray-300 rounded-md"
+                >
+                  <div class="flex flex-col gap-1">
+                    <h3
+                      class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+                    >
+                      Morning
+                    </h3>
+                    <div class="flex items-center flex-wrap gap-2">
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h3
+                      class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+                    >
+                      Afternoon
+                    </h3>
+                    <div class="flex items-center flex-wrap gap-2">
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h3
+                      class="md:text-[1.3vw] sm:text-[2.3vw] xs:text-[3.8vw] font-semibold"
+                    >
+                      Evening
+                    </h3>
+                    <div class="flex items-center flex-wrap gap-2">
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+
+                      <div
+                        class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] rounded-md bg-gray-100 cursor-pointer timeSelect select-none"
+                      >
+                        10:45
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="text-gray-300" />
+            <div
+              class="md:p-[2vw] sm:p-[3vw] xs:p-[4vw] flex items-center justify-between"
+            >
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] flex items-center gap-2 rounded-full bg-theme-navi-blue text-white md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+                <span>Back</span>
+              </button>
+              <button
+                class="md:py-[0.5vw] sm:py-[1vw] xs:py-[1.5vw] md:px-[2vw] sm:px-[3vw] xs:px-[4vw] flex items-center gap-2 rounded-full bg-theme-blue text-white md:text-[1vw] sm:text-[2vw] xs:text-[3.5vw]"
+              >
+                <span>Select Appointment Type </span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+    integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+    integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../Static/js/common.js"></script>
+  <script>
+    const calendarDays = document.getElementById("calendarDays");
+    const monthYear = document.getElementById("monthYear");
+    const prevMonth = document.getElementById("prevMonth");
+    const nextMonth = document.getElementById("nextMonth");
+    const selectedDateDisplay = document.getElementById("selectedDateDisplay");
+
+    let currentDate = new Date(); // Current calendar view
+    let selectedDate = null; // Store selected date
+    let selectedDayElement = null; // Store selected DOM element
+
+    const renderCalendar = (date) => {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const prevMonthDays = new Date(year, month, 0).getDate();
+      const totalCells = firstDay + daysInMonth;
+      const nextMonthPadding = (7 - (totalCells % 7)) % 7;
+
+      const today = new Date();
+      const isCurrentMonth =
+        today.getFullYear() === year && today.getMonth() === month;
+
+      monthYear.textContent = date.toLocaleString("default", {
+        month: "long",
+        year: "numeric",
+      });
+
+      calendarDays.innerHTML = "";
+      selectedDayElement = null; // reset on each render
+
+      // --- Prev Month Padding
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const day = prevMonthDays - i;
+        const cell = document.createElement("div");
+        cell.className = "text-gray-400 p-2";
+        cell.textContent = day;
+        calendarDays.appendChild(cell);
+      }
+
+      // --- Current Month Days
+      for (let i = 1; i <= daysInMonth; i++) {
+        const cell = document.createElement("div");
+        cell.className = "cursor-pointer p-2 rounded-md hover:bg-blue-100";
+
+        // Today's date highlight
+        if (
+          isCurrentMonth &&
+          i === today.getDate() &&
+          (!selectedDate ||
+            today.toDateString() === selectedDate.toDateString())
+        ) {
+          cell.classList.add("bg-blue-200", "font-semibold");
+        }
+
+        // If selected date matches current loop date
+        if (
+          selectedDate &&
+          selectedDate.getFullYear() === year &&
+          selectedDate.getMonth() === month &&
+          selectedDate.getDate() === i
+        ) {
+          cell.classList.remove("hover:bg-blue-100");
+          cell.classList.add("bg-blue-500", "text-white");
+          selectedDayElement = cell;
+        }
+
+        cell.textContent = i;
+
+        // Click event to select
+        cell.addEventListener("click", () => {
+          if (selectedDayElement) {
+            selectedDayElement.classList.remove("bg-blue-500", "text-white");
+            selectedDayElement.classList.add("hover:bg-blue-100");
+          }
+
+          selectedDate = new Date(year, month, i);
+          selectedDateDisplay.textContent =
+            "Selected Date: " + selectedDate.toDateString();
+
+          cell.classList.remove("hover:bg-blue-100");
+          cell.classList.add("bg-blue-500", "text-white");
+          selectedDayElement = cell;
+        });
+
+        calendarDays.appendChild(cell);
+      }
+
+      // --- Next Month Padding
+      for (let i = 1; i <= nextMonthPadding; i++) {
+        const cell = document.createElement("div");
+        cell.className = "text-gray-400 p-2";
+        cell.textContent = i;
+        calendarDays.appendChild(cell);
+      }
+    };
+
+    // Navigation
+    prevMonth.addEventListener("click", () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar(currentDate);
+    });
+
+    nextMonth.addEventListener("click", () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar(currentDate);
+    });
+
+    // Initial render
+    renderCalendar(currentDate);
+
+    // Select Time here
+    const selectTime = document.querySelectorAll(".timeSelect");
+    selectTime.forEach((time) => {
+      time.addEventListener("click", (e) => {
+        const time = e.target;
+        time.classList.toggle("bg-gray-100");
+        time.classList.toggle("bg-theme-blue");
+        time.classList.toggle("text-white");
+      });
+    });
+  </script>
+</html>
