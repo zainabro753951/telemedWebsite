@@ -122,28 +122,7 @@ const handleSelectSeviceBox = (serviceBoxId) => {
   }
 };
 
-function setupImagePreview(inputSelector, previewSelector) {
-  const input = document.querySelector(inputSelector);
-  const preview = document.querySelector(previewSelector);
 
-  input.addEventListener("change", function () {
-    const file = this.files[0];
-
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        preview.src = this.result;
-      };
-      reader.readAsDataURL(file);
-    } else {
-      preview.src =
-        "./images/Doctor-login/9ee137a7590ead1e8bdbfb7d8341d5dbb1503cac.png";
-    }
-  });
-}
-
-// ✅ Call the function
-setupImagePreview("#profileImage", "#profilePreview");
 
 // Default speed is slow for autoplay
 const Reviewswiper = new Swiper(".reviewSlider", {
